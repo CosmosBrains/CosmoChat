@@ -1,219 +1,132 @@
-@keyframes hovering {
- from {
-   margin-bottom: 3px;
- }
- to {
-   margin-bottom: 0;
- }
+@font-face {
+    font-family:  "MSGothic";
+    src: url(/media/ms-gothic.ttf);
 }
 body {
-  background: #FFF;
-  font-family: Verdana, sans-serif;
+    font-family: MS Gothic, "MSGothic";
+    font-smooth: never;
 }
-.msgWrapper {
-    margin: 5px;
+#background, #settingsMenu {
+    background: url(/media/grid.png);
+    background-size: 100px 100px;
+    background-attachment: local;
+    background-repeat: repeat;
 }
-.allMessages {
- display: flex;
- gap: 2.5vh;
- background: #EEE;
- border: 1px solid rgb(208, 208, 191);
- font-size: 8pt;
- border-radius: 0 3px 3px 3px;
- margin: 0;
- line-height: 9pt;
- position: relative;
- color: #555;
- width: auto;
- padding: 5px;
-}
-.msgWrapper:nth-child(6n) {
-    margin-top: 20px;
-}
-.msgWrapper:nth-child(6n) > .allMessages:before {
-    content: attr(time);
-    position: absolute;
-    bottom: calc(100% + 3px);
-    width: 100%;
-    text-align: center;
-}
-br {
- height: 6pt;
-}
-.allMessages:hover:after {
- content: ' ';
- position: absolute;
- left: 0;
- top: 0;
- height: 100%;
- width: 100%;
- border-radius: inherit;
- background-color: rgba(0, 0, 0, 0.05);
- pointer-events: none;
-}
-.senderInfo {
- display: block;
- margin: 2px;
- font-family: Verdana;
- font-style: italic;
- font-weight: bold;
- text-align: justify;
- min-width: 50px;
- max-width: 30%;
- word-break: break-all;
-}
-/* .sent > .senderInfo {
-   text-align: right;
-}
- .recieved > .senderInfo {
-   text-align: left;
-}
- */
-#background {
- background-color: #FFF;
-}
-.msgBody {
- text-align: justify;
- cursor: text;
-}
-#input, #nameEntry {
- color: #333;
- background-color: #CCC;
- border: none;
- font-family: Verdana;
- font-size: 8pt;
- padding: 5px;
- width: calc(100% - 10px);
- border-radius: 0;
- margin: 0;
- border-top: solid 1px #555;
-}
-#input:focus, #nameEntry:focus {
- outline: dotted 1px #000;
-}
-#input:empty::before {
- content: "Leave a comment...";
-}
-a {
- font-family: inherit;
-}
-#timestamp {
- color: #555;
- text-align: center;
- font-size: 8pt;
- margin: 0;
-}
-#timestamp:after {
-    content: "\2934";
-    font-size: 12pt;
-    font-weight: bold;
-}
-.badge {
-  display: none;
-}
-.senderInfo:has(.owner) {
- font-family: Verdana;
- font-weight: bold;
- color: #F33;
-}
-.senderInfo:has(.mod) {
-  font-family: Verdana;
-  font-weight: bold;
-  color: #3F3;
+a  {
+    color: #88F;
 }
 #top_banner {
- display: none;
+    font-family:  MS Gothic, "MSGothic";
+    font-weight: bolder !important;
+    background: #AAF;
+    background: linear-gradient(0deg, rgba(170,170,255,1) 0%, rgba(238,238,255,1) 50%, rgba(170,170,255,1) 100%);
+    width: calc(100% - 2px);
+    border: solid 1px #99E;
+    box-shadow: 0 0 2px #FFF, 0 0 2px #FFF, 0 0 2px #FFF, 0 0 2px #FFF, 0 0 1px #FFF, 0 3px 4px #005;
+    text-shadow: 1px 1px 2px #005;
+    position: relative;
+    z-index: 4;
+    content: "Testing"
 }
-#settings {
- filter: invert(50%);
- opacity: 0.75;
+.allMessages {
+    background-color: #FFF;
+
+    background-size: 100px 100px;
+    box-shadow: 0 0 4px #FFF, 0 0 4px #FFF, 0 0 4px #FFF, 0 0 4px #FFF, 0 0 4px #FFF, 0 3px 4px #005;
+    border: 1px solid #88F;
+    border-radius: 8px;
+    margin: 0 20px 0 20px;
+    position: relative;
+}
+.allMessages.containsOnlyEmojis .emoji {
+    height: 50px;
+}
+.msgWrapper:has(.pm) {
+    padding-top: 26px;
+}
+.allMessages.pm {
+    border-color: #F55;
+}
+.allMessages.pm:after {
+    content: "Private Message";
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #F55;
+    color: #FFF;
+    height: 16px;
+    padding: 5px;
+    position: absolute;
+    right: 5vw;
+    bottom: 100%;
+    z-index: 5;
+    border-radius: 5px 5px 0 0;
+}
+.msgWrapper + .msgWrapper {
+    margin-top: 25px;
+    margin-bottom: 15px;
+}
+#timestamp {
+    font-size: 8pt;
+    margin-top: 10px !important;
+    padding-left: 30px;
+}
+#input, #nameEntry {
+    background-color: #FFF;
+    border-radius: 0;
+    border-top: 1px solid #AAF;
+    font-family:  MS Gothic, "MSGothic";
+}
+#name {
+    background-color: #FFF;
+    border-radius: 0;
+    border: solid 1px #88F;
+    padding: 2px;
+    font-family:  MS Gothic, "MSGothic";
 }
 #settings:hover {
- filter: invert(10%);
+    filter: drop-shadow(0 0 3px #FFF) drop-shadow(0 0 3px #FFF) drop-shadow(0 0 3px #FFF);
+    transform: rotate(180deg);
 }
-blockquote {
- font-style: italic;
+#settings {
+    filter: drop-shadow(0 0 1px #FFF) drop-shadow(0 0 1px #FFF) drop-shadow(0 0 1px #FFF);
+    transition: all 250ms linear;
 }
-#loadMore {
- font-size: 10pt;
- font-family: Verdana;
-}
-.pinned {
- position: sticky;
- top: 0;
- z-index: 2;
- border-radius: 5px;
- max-height: 15vh;
- overflow: hidden;
- cursor: default;
-}
-.pinned:hover {
- max-height: none;
- height: auto;
- box-shadow: 0px 2px 5px #000;
- background-color: #FFF;
-}
-.pinned::before {
- content: "\23F7";
- text-align: center;
- display: flex;
- align-items: flex-end;
- justify-content: center;
- position: absolute;
- left: 0;
- bottom: 0;
- z-index: 2;
- width: 100%;
- height: 15vh;
- max-height: 15vh;
- animation: 500ms linear infinite alternate hovering;
-}
-.pinned:hover::before {
- display: none;
-}
-.pinned > .allMessages {
- box-shadow: 0 0 3px #000;
-}
-.pinned > .allMessages:hover {
- box-shadow: none;
-}
-.pinned > .allMessages::before {
- content: " ";
- display: block;
- position: absolute;
- left: 0;
- top: 0;
- width: 100%;
- height: 15vh;
- max-height: 100%;
- background: linear-gradient(transparent, transparent, #333);
- opacity: 0.75 
-}
-.pinned > .allMessages:hover::before {
- display: none;
-}
-.pinned:after {
- display: inline-block;
- position: absolute;
- right: 2px;
- top: 2px;
- content: "📌";
-}
-#replyBanner {
-  font-size: 8pt;
-  font-family: Verdana, sans-serif;
+#emojiTrayToggle {
+    height: 15px;
+    width: 15px;
+    padding: 6px;
+    margin-top: 3px;
+    margin-left: 3px;
+    background-image: url(/media/pixel-emoji.webp) !important;
+    opacity: 0.5;
 }
 #is_typing {
-  background-color: #FFF;
-  border: solid 1px #333;
-  height: 15px;
-  border-radius: 8px;
-  left: calc(50% - 15px);
+    filter: drop-shadow(0 0 1px #FFF) drop-shadow(0 0 1px #FFF) drop-shadow(0 0 1px #FFF);
+    background-color: #FFF;
+    border: solid 1px #AAF;
+    border-radius: 3px;
+    left: unset;
+    right: 10px;
+    bottom: 27px;
+    overflow: visible;
+}
+#is_typing:hover::after {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    content: "Someone is typing";
+    font-size: 10pt;
+    position: fixed;
+    right: 35px;
+    bottom: 0;
+    width: 50vw;
+    color: #000;
+    z-index: 100000;
 }
 #is_typing > span {
-  background-color: #333;
-}
-pre:has(>code){
-  margin: 5px;
-  background-color: rgba(0, 0, 0, 0.25);
+    background-color: #AAF;
+    border-radius: 0;
+    height: 2px;
+    width: 2px;
 }
